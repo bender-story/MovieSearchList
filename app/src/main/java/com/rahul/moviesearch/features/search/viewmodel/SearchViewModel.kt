@@ -45,4 +45,9 @@ class SearchViewModel : ViewModel(), KoinComponent {
         return pagination.first == 1
     }
 
+    override fun onCleared() {
+        appServiceRepo.dispose()
+        super.onCleared()
+    }
+
 }

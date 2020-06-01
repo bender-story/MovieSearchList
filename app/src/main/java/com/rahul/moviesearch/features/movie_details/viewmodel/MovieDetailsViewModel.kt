@@ -29,4 +29,9 @@ class MovieDetailsViewModel : ViewModel(), KoinComponent {
 
             })
     }
+
+    override fun onCleared() {
+        appServiceRepo.dispose()
+        super.onCleared()
+    }
 }
