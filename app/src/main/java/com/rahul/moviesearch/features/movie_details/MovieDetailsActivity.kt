@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.rahul.moviesearch.R
 import com.rahul.moviesearch.databinding.ActivityMovieDetailsBinding
+import com.rahul.moviesearch.features.movie_details.viewmodel.MovieDetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

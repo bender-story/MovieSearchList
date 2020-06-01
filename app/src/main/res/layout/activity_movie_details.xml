@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.rahul.moviesearch.features.movie_details.MovieDetailsViewModel" />
+            type="com.rahul.moviesearch.features.movie_details.viewmodel.MovieDetailsViewModel" />
     </data>
 
     <ScrollView

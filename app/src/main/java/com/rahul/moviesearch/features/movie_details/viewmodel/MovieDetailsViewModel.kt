@@ -1,4 +1,4 @@
-package com.rahul.moviesearch.features.movie_details
+package com.rahul.moviesearch.features.movie_details.viewmodel
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
