@@ -13,6 +13,16 @@
         <item name="android:textColor">@color/headerTextColor</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="textStyle_15">
+        <item name="android:textSize">@dimen/textSize_15</item>
+        <item name="android:textColor">@color/headerTextColor</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+    <style name="textStyle_bold_15">
+        <item name="android:textSize">@dimen/textSize_15</item>
+        <item name="android:textColor">@color/headerTextColor</item>
+        <item name="android:textStyle">italic|bold</item>
+    </style>
 
     <style name="titleTextStyle">
         <item name="android:textSize">@dimen/textSize_12</item>
