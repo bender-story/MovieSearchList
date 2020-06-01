@@ -30,6 +30,7 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+        initAppBar()
         observeList()
         fetchData(searchKey)
     }
@@ -41,6 +42,10 @@ class SearchActivity : AppCompatActivity() {
         searchView.queryHint = "Search Movies"
         searchView.setOnQueryTextListener(searchViewListener)
         return true
+    }
+
+    private fun initAppBar(){
+        supportActionBar?.title = getString(R.string.movies_list)
     }
 
     /**

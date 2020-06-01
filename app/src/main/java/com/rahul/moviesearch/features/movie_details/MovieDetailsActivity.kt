@@ -19,8 +19,13 @@ class MovieDetailsActivity : AppCompatActivity() {
         val binding: ActivityMovieDetailsBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
         binding.viewModel = viewModel
+        initAppBar()
         initObservers()
         fetchMovieDetails()
+    }
+
+    private fun initAppBar(){
+        supportActionBar?.title = getString(R.string.movie_details)
     }
 
     /**
