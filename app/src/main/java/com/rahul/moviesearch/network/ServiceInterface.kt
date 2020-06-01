@@ -20,7 +20,7 @@ interface ServiceInterface {
         @Query("s") movieName: String,
         @Query("page") pageNo: Int,
         @Query("apikey") apiKey: String = Constants.apikey
-    ): Observable<List<MovieSearchResult>>
+    ): Observable<MovieSearchResult>
 
 
     /**
@@ -30,5 +30,5 @@ interface ServiceInterface {
     fun fetchMovieDetails(
         @Query("i") movieID: String,
         @Query("apikey") apiKey: String = Constants.apikey
-    ): Observable<List<MovieDetailsResult>>
+    ): Observable<MovieDetailsResult>
 }

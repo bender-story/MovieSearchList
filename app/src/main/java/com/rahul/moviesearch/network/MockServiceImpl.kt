@@ -15,20 +15,20 @@ class MockServiceImpl(private val delegate: BehaviorDelegate<ServiceInterface>) 
         movieName: String,
         pageNo: Int,
         apiKey: String
-    ): Observable<List<MovieSearchResult>> {
+    ): Observable<MovieSearchResult> {
         var json:String= getMovieListMockJSON()
 
-        val mockResponse= Gson().fromJson(json, Array<MovieSearchResult>::class.java).toList()
+        val mockResponse= Gson().fromJson(json, MovieSearchResult::class.java)
         return delegate.returningResponse(mockResponse).fetchMovieList(movieName,pageNo = pageNo)
     }
 
     override fun fetchMovieDetails(
         movieID: String,
         apiKey: String
-    ): Observable<List<MovieDetailsResult>> {
+    ): Observable<MovieDetailsResult> {
         var json:String= getMovieDetailsJson()
 
-        val mockResponse= Gson().fromJson(json, Array<MovieSearchResult>::class.java).toList()
+        val mockResponse= Gson().fromJson(json, MovieDetailsResult::class.java)
         return delegate.returningResponse(mockResponse).fetchMovieDetails(movieID)
     }
 

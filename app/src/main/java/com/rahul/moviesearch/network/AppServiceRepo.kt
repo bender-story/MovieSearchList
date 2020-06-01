@@ -3,6 +3,7 @@ package com.rahul.moviesearch.network
 import com.rahul.moviesearch.ServiceType
 import com.rahul.moviesearch.model.MovieDetailsResult
 import com.rahul.moviesearch.model.MovieSearchResult
+import com.rahul.moviesearch.model.Search
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers
 import org.koin.core.KoinComponent
@@ -23,7 +24,7 @@ class AppServiceRepo(serviceType: ServiceType):KoinComponent{
      * @param onSuccess error callback
      */
     fun getMoviesList(
-        onSuccess: (List<MovieSearchResult>?) -> Unit,
+        onSuccess: (List<Search>?) -> Unit,
         onError: (String) -> Unit,
         movieName: String,
         pageNo: Int
@@ -34,7 +35,7 @@ class AppServiceRepo(serviceType: ServiceType):KoinComponent{
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                        result -> onSuccess.invoke(result)
+                        result -> onSuccess.invoke(result.Search)
                 },
                 {
                         error -> onError.invoke(error.toString())
@@ -48,7 +49,7 @@ class AppServiceRepo(serviceType: ServiceType):KoinComponent{
      * @param onSuccess error callback
      */
     fun getMovieDetails(
-        onSuccess: (List<MovieDetailsResult>?) -> Unit,
+        onSuccess: (MovieDetailsResult?) -> Unit,
         onError: (String) -> Unit,
         movieID: String
     ){

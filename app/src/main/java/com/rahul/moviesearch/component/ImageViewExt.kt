@@ -20,5 +20,5 @@ import com.bumptech.glide.request.RequestOptions
  */
 @BindingAdapter("getImage")
 fun AppCompatImageView.getImage(path: String?) {
-    Glide.with(this.context).load(path).apply(RequestOptions.circleCropTransform()).into(this)
+    Glide.with(this.context).load(path).into(this)
 }
