@@ -1,7 +1,7 @@
-package com.rahul.network
+package com.rahul.moviesearch.network
 
-import com.rahul.Constants
-import com.rahul.ServiceType
+import com.rahul.moviesearch.Constants
+import com.rahul.moviesearch.ServiceType
 import retrofit2.mock.BehaviorDelegate
 import retrofit2.mock.MockRetrofit
 import retrofit2.mock.NetworkBehavior

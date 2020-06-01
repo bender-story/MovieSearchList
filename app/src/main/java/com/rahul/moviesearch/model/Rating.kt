@@ -1,4 +1,4 @@
-package com.rahul.model
+package com.rahul.moviesearch.model
 
 data class Rating(
     val Source: String,

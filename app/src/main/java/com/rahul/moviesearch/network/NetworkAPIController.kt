@@ -1,4 +1,4 @@
-package com.rahul.network
+package com.rahul.moviesearch.network
 
 import okhttp3.JavaNetCookieJar
 import retrofit2.converter.gson.GsonConverterFactory

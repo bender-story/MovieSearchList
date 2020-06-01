@@ -1,8 +1,8 @@
-package com.rahul.network
+package com.rahul.moviesearch.network
 
-import com.rahul.Constants
-import com.rahul.model.MovieDetailsResult
-import com.rahul.model.MovieSearchResult
+import com.rahul.moviesearch.Constants
+import com.rahul.moviesearch.model.MovieDetailsResult
+import com.rahul.moviesearch.model.MovieSearchResult
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

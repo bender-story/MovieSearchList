@@ -1,4 +1,4 @@
-package com.rahul.utils
+package com.rahul.moviesearch.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
