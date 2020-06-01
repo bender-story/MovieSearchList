@@ -3,4 +3,12 @@
     <string name="network_not_available">Network Unavailable</string>
     <string name="error">Error Fetching the Data</string>
     <string name="search">Search</string>
+    <string name="categories">Categories</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="score">Score</string>
+    <string name="reviews">Reviews</string>
+    <string name="popularity">Popularity</string>
+    <string name="director">Director</string>
+    <string name="writer">Writer</string>
+    <string name="actors">Actors</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.rahul.moviesearch.di
 
 import com.rahul.moviesearch.ServiceType
+import com.rahul.moviesearch.features.movie_details.MovieDetailsViewModel
 import com.rahul.moviesearch.features.search.viewmodel.SearchViewModel
 import com.rahul.moviesearch.network.AppServiceRepo
 import org.koin.dsl.module
@@ -15,4 +16,5 @@ val appModule= module {
     factory { (serviceType : ServiceType) -> AppServiceRepo(serviceType) }
     factory { (serviceType : ServiceType) -> ServiceAPIHelper(serviceType) }
     viewModel { SearchViewModel() }
+    viewModel { MovieDetailsViewModel() }
 }

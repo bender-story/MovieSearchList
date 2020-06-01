@@ -1,5 +1,7 @@
 package com.rahul.moviesearch.model
 
+import com.rahul.moviesearch.utils.getHoursAndMins
+
 data class MovieDetailsResult(
     val Actors: String,
     val Awards: String,
@@ -26,4 +28,8 @@ data class MovieDetailsResult(
     val imdbID: String,
     val imdbRating: String,
     val imdbVotes: String
-)
+){
+    fun getHoursAndMins() : String{
+        return Runtime.getHoursAndMins()
+    }
+}

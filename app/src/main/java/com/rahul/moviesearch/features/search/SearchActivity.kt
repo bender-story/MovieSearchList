@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rahul.moviesearch.R
 import com.rahul.moviesearch.component.DialogExt
 import com.rahul.moviesearch.component.makeVisible
+import com.rahul.moviesearch.controller.Navigator
+import com.rahul.moviesearch.features.movie_details.MovieDetailsActivity
 import com.rahul.moviesearch.features.search.viewmodel.SearchRowViewModel
 import com.rahul.moviesearch.features.search.viewmodel.SearchViewModel
 import com.rahul.moviesearch.utils.NetworkUtils
@@ -72,7 +74,11 @@ class SearchActivity : AppCompatActivity() {
             searchRecyclerView.addOnScrollListener(recyclerViewOnScrollListener)
         }
         viewModel.movieList.value?.map {
-            (searchRecyclerView.adapter as SearchAdapter).add(SearchRowViewModel(it))
+            (searchRecyclerView.adapter as SearchAdapter).add(SearchRowViewModel(it) {
+                var bundle = Bundle()
+                bundle.putString("movieId", it.imdbID)
+                Navigator.goToActivity(this, MovieDetailsActivity::class.java, bundle = bundle)
+            })
         }
         viewModel.updatePageCount()
     }
