@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rahul.moviesearch.databinding.SearchRecyclerItemViewBinding
 import com.rahul.moviesearch.features.search.viewmodel.SearchRowViewModel
+import com.rahul.moviesearch.utils.filterEmpty
 
 /**
  * Main Adapter this the adapter used to load
@@ -18,7 +19,7 @@ class SearchAdapter(val items: ArrayList<SearchRowViewModel>?) : RecyclerView.Ad
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = items?.size ?:0
+    override fun getItemCount(): Int = items?.size.filterEmpty()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(items?.get(position)!!)
 
@@ -26,6 +27,22 @@ class SearchAdapter(val items: ArrayList<SearchRowViewModel>?) : RecyclerView.Ad
         fun bind(item: SearchRowViewModel) {
             binding.viewModel = item
             binding.executePendingBindings()
+        }
+    }
+
+    fun add(rowViewModel: SearchRowViewModel) {
+        val position = items?.indexOf(rowViewModel)
+        if (position!! == -1) {
+            items?.add(rowViewModel)
+            notifyItemInserted(items?.size.filterEmpty() - 1)
+        }
+    }
+
+    fun remove(rowViewModel: SearchRowViewModel) {
+        val position = items?.indexOf(rowViewModel)
+        if (position!! > -1) {
+            items?.removeAt(position)
+            notifyItemRemoved(position)
         }
     }
 }
