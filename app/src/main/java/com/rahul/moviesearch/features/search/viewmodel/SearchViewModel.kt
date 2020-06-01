@@ -15,6 +15,7 @@ import org.koin.core.parameter.parametersOf
  */
 class SearchViewModel : ViewModel(), KoinComponent {
     val movieList: MutableLiveData<List<Search>?> = MutableLiveData()
+    val error: MutableLiveData<String?> = MutableLiveData()
     private val appServiceRepo: AppServiceRepo by inject { parametersOf(ServiceType.API) }
     var pagination:Pair<Int,Boolean> = Pair(1,true)
 
@@ -29,7 +30,7 @@ class SearchViewModel : ViewModel(), KoinComponent {
             onSuccess = { response ->
                 movieList.postValue(response)
             }, onError = {
-
+                error.postValue(it)
 
             })
     }

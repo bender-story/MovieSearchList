@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rahul.moviesearch.R
@@ -51,6 +52,12 @@ class SearchActivity : AppCompatActivity() {
         viewModel?.movieList.observe(this, androidx.lifecycle.Observer {
             changeState(ViewState.SHOW_LIST)
             initRecyclerView()
+        })
+
+        viewModel.error.observe(this, Observer {
+            DialogExt(this).buildDialog(getString(R.string.error)) {
+                fetchData(searchKey)
+            }
         })
     }
 
