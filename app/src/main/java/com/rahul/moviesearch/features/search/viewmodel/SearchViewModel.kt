@@ -45,13 +45,4 @@ class SearchViewModel : ViewModel(), KoinComponent {
         return pagination.first == 1
     }
 
-//    /**
-//     *  Create a MainRowViewModel list from the mutable list
-//     */
-//    fun getSearchRowViewModel(): List<SearchRowViewModel>? {
-//        return movieList.value?.map {
-//            SearchRowViewModel(it)
-//        }
-//    }
-
 }

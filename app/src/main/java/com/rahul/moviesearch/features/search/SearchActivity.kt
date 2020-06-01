@@ -15,6 +15,7 @@ import com.rahul.moviesearch.controller.Navigator
 import com.rahul.moviesearch.features.movie_details.MovieDetailsActivity
 import com.rahul.moviesearch.features.search.viewmodel.SearchRowViewModel
 import com.rahul.moviesearch.features.search.viewmodel.SearchViewModel
+import com.rahul.moviesearch.model.Search
 import com.rahul.moviesearch.utils.NetworkUtils
 import com.rahul.moviesearch.utils.filterEmpty
 import kotlinx.android.synthetic.main.activity_search.*
@@ -35,15 +36,10 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_menu, menu)
-
         val searchItem: MenuItem = menu!!.findItem(R.id.search)
-
         val searchView: SearchView = searchItem.actionView as SearchView
         searchView.queryHint = "Search Movies"
         searchView.setOnQueryTextListener(searchViewListener)
-//        searchView.isIconified = false
-
-
         return true
     }
 
@@ -53,7 +49,7 @@ class SearchActivity : AppCompatActivity() {
     private fun observeList() {
         viewModel?.movieList.observe(this, androidx.lifecycle.Observer {
             changeState(ViewState.SHOW_LIST)
-            initRecyclerView()
+            initRecyclerView(it)
         })
 
         viewModel.error.observe(this, Observer {
@@ -66,14 +62,14 @@ class SearchActivity : AppCompatActivity() {
     /**
      * load recyclerview with latest changes
      */
-    private fun initRecyclerView() {
+    private fun initRecyclerView(movieList: List<Search>?) {
         if (viewModel.pagination.first == 1) {
             searchRecyclerView.adapter = SearchAdapter(rowViewModels)
             searchRecyclerView.layoutManager = GridLayoutManager(this@SearchActivity, 2)
             // Pagination
             searchRecyclerView.addOnScrollListener(recyclerViewOnScrollListener)
         }
-        viewModel.movieList.value?.map {
+        movieList?.map {
             (searchRecyclerView.adapter as SearchAdapter).add(SearchRowViewModel(it) {
                 var bundle = Bundle()
                 bundle.putString("movieId", it.imdbID)
@@ -148,7 +144,6 @@ class SearchActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 return if (newText.isNullOrEmpty()) false
                 else {
@@ -167,6 +162,7 @@ class SearchActivity : AppCompatActivity() {
 
 }
 
+//Describes the sate of the view
 enum class ViewState {
     LOADER,
     BOTTOM_LOADER,

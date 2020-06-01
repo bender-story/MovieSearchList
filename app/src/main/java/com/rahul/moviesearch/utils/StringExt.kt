@@ -4,19 +4,20 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
+// gets the hours and minutes from minutes alone
 fun String.getHoursAndMins(): String {
     var sdf = SimpleDateFormat("mm")
 
-    try {
+    return try {
         val dt: Date = sdf.parse(this)
         sdf = SimpleDateFormat("HH:mm")
-        return sdf.format(dt)
+        sdf.format(dt)
     } catch (e: ParseException) {
         e.printStackTrace()
-        return ""
+        ""
     }
 }
 
-fun String?.filterEmpty():String{
+fun String?.filterEmpty(): String {
     return this ?: ""
 }
