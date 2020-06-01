@@ -1,7 +1,10 @@
 package com.rahul.moviesearch.features.search
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rahul.moviesearch.R
@@ -18,12 +21,27 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SearchActivity : AppCompatActivity() {
     private val viewModel by viewModel<SearchViewModel>()
     private var rowViewModels: ArrayList<SearchRowViewModel>? = arrayListOf()
+    private var searchKey = "bat"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         observeList()
-        fetchData()
+        fetchData(searchKey)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search_menu, menu)
+
+        val searchItem: MenuItem = menu!!.findItem(R.id.search)
+
+        val searchView: SearchView = searchItem.actionView as SearchView
+        searchView.queryHint = "Search Movies"
+        searchView.setOnQueryTextListener(searchViewListener)
+//        searchView.isIconified = false
+
+
+        return true
     }
 
     /**
@@ -55,24 +73,25 @@ class SearchActivity : AppCompatActivity() {
     /**
      * fetch data from the server
      */
-    private fun fetchData() {
+    private fun fetchData(movieName: String) {
+        searchKey = if (movieName.isNullOrEmpty()) "bat" else movieName
         if (!NetworkUtils.isNetworkAvailable(this))
             DialogExt(this).buildDialog(getString(R.string.network_not_available)) {
-                fetchData()
+                fetchData(searchKey)
             }
         else
-            fetchMovieList()
+            fetchMovieList(searchKey)
     }
 
     /**
      * fetch data from the server
      */
-    private fun fetchMovieList() {
+    private fun fetchMovieList(movieName: String) {
         if (viewModel.pagination.second) {
             if (viewModel.fetchingFirstPage()) changeState(ViewState.LOADER) else changeState(
                 ViewState.BOTTOM_LOADER
             )
-            viewModel?.fetchMovieList("bat", viewModel.pagination.first.filterEmpty())
+            viewModel?.fetchMovieList(movieName, viewModel.pagination.first.filterEmpty())
         }
     }
 
@@ -106,15 +125,37 @@ class SearchActivity : AppCompatActivity() {
                 super.onScrolled(recyclerView, dx, dy)
                 var canScrollMore = searchRecyclerView.canScrollVertically(1)
                 if (!canScrollMore && viewModel.pagination.second) {
-                    fetchData()
+                    fetchData(searchKey)
                 }
             }
         }
+
+    private val searchViewListener =
+        object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return if (newText.isNullOrEmpty()) false
+                else {
+                    resetList()
+                    fetchData(newText)
+                    true
+                }
+            }
+
+        }
+
+    private fun resetList() {
+        viewModel.pagination = Pair(1, true);
+        (searchRecyclerView.adapter as SearchAdapter).removeAll();
+    }
 
 }
 
 enum class ViewState {
     LOADER,
     BOTTOM_LOADER,
-    SHOW_LIST
+    SHOW_LIST,
 }

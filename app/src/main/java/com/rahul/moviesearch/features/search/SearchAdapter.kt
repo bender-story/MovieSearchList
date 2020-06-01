@@ -38,11 +38,7 @@ class SearchAdapter(val items: ArrayList<SearchRowViewModel>?) : RecyclerView.Ad
         }
     }
 
-    fun remove(rowViewModel: SearchRowViewModel) {
-        val position = items?.indexOf(rowViewModel)
-        if (position!! > -1) {
-            items?.removeAt(position)
-            notifyItemRemoved(position)
-        }
+    fun removeAll() {
+            items?.clear()
     }
 }
