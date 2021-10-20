@@ -8,26 +8,6 @@ import androidx.fragment.app.FragmentActivity
 // This class makes the navigation easy.
 object Navigator {
 
-    // Add/replace fragment to the activity
-    fun addFragment(
-        context: FragmentActivity?,
-        fragmentName: String,
-        addToBackStack: Boolean,
-        bundle: Bundle?,
-        tag: String,
-        fragmentId: Int = 0
-    ) {
-        val manager = context?.supportFragmentManager
-        val ft = manager?.beginTransaction()
-
-        if (addToBackStack) {
-            ft?.addToBackStack(tag)
-        }
-        val fragment = androidx.fragment.app.Fragment.instantiate(context, fragmentName, bundle)
-        ft?.replace(fragmentId, fragment, tag)
-        ft?.commitAllowingStateLoss()
-    }
-
     //move from one activity to other.
     fun goToActivity(
         fromActivity: Activity,
