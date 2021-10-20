@@ -23,5 +23,9 @@ The libraries or languages that are being used for this project are.
 9. cardViews
 10. androidx components
 
+<p float="left">
+<kbd>
+<img src="https://user-images.githubusercontent.com/10196013/138040404-8e768b6d-af06-4c26-942b-0fb6b19279af.png" width="300" height="500"></kbd> 
+<kbd><img src="https://user-images.githubusercontent.com/10196013/138040419-c68a88bb-b409-4099-b02b-5c4093f3963a.png" width="300" height="500"></kbd>
+</p>
 
-![Screenshot_1634711663](https://user-images.githubusercontent.com/10196013/138040404-8e768b6d-af06-4c26-942b-0fb6b19279af.png width="150") ![Screenshot_1634711571](https://user-images.githubusercontent.com/10196013/138040419-c68a88bb-b409-4099-b02b-5c4093f3963a.png width="150")
