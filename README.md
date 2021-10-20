@@ -24,4 +24,4 @@ The libraries or languages that are being used for this project are.
 10. androidx components
 
 
-![Screenshot_1634711663](https://user-images.githubusercontent.com/10196013/138040404-8e768b6d-af06-4c26-942b-0fb6b19279af.png =250x250) ![Screenshot_1634711571](https://user-images.githubusercontent.com/10196013/138040419-c68a88bb-b409-4099-b02b-5c4093f3963a.png =250x250)
+![Screenshot_1634711663](https://user-images.githubusercontent.com/10196013/138040404-8e768b6d-af06-4c26-942b-0fb6b19279af.png width="150") ![Screenshot_1634711571](https://user-images.githubusercontent.com/10196013/138040419-c68a88bb-b409-4099-b02b-5c4093f3963a.png width="150")
