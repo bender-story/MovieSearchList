@@ -1,9 +1,8 @@
-package self.com.githubtrendinglistapp.utils
+package com.rahul.moviesearch.utils
 
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import com.rahul.moviesearch.BaseTest
-import com.rahul.moviesearch.utils.NetworkUtils
 import org.junit.Assert
 import org.junit.Test
 import org.mockito.Mockito

@@ -52,7 +52,7 @@ class SearchActivity : AppCompatActivity() {
      * observer to check live data changes
      */
     private fun observeList() {
-        viewModel?.movieList.observe(this, androidx.lifecycle.Observer {
+        viewModel.movieList.observe(this, androidx.lifecycle.Observer {
             changeState(ViewState.SHOW_LIST)
             initRecyclerView(it)
         })
@@ -76,7 +76,7 @@ class SearchActivity : AppCompatActivity() {
         }
         movieList?.map {
             (searchRecyclerView.adapter as SearchAdapter).add(SearchRowViewModel(it) {
-                var bundle = Bundle()
+                val bundle = Bundle()
                 bundle.putString("movieId", it.imdbID)
                 Navigator.goToActivity(this, MovieDetailsActivity::class.java, bundle = bundle)
             })
@@ -105,7 +105,7 @@ class SearchActivity : AppCompatActivity() {
             if (viewModel.fetchingFirstPage()) changeState(ViewState.LOADER) else changeState(
                 ViewState.BOTTOM_LOADER
             )
-            viewModel?.fetchMovieList(movieName, viewModel.pagination.first.filterEmpty())
+            viewModel.fetchMovieList(movieName, viewModel.pagination.first.filterEmpty())
         }
     }
 
@@ -137,7 +137,7 @@ class SearchActivity : AppCompatActivity() {
         object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                var canScrollMore = searchRecyclerView.canScrollVertically(1)
+                val canScrollMore = searchRecyclerView.canScrollVertically(1)
                 if (!canScrollMore && viewModel.pagination.second) {
                     fetchData(searchKey)
                 }
@@ -161,8 +161,8 @@ class SearchActivity : AppCompatActivity() {
         }
 
     private fun resetList() {
-        viewModel.pagination = Pair(1, true);
-        (searchRecyclerView.adapter as SearchAdapter).removeAll();
+        viewModel.pagination = Pair(1, true)
+        (searchRecyclerView.adapter as SearchAdapter).removeAll()
     }
 
 }

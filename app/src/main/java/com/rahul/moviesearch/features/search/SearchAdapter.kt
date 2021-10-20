@@ -23,7 +23,7 @@ class SearchAdapter(val items: ArrayList<SearchRowViewModel>?) : RecyclerView.Ad
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(items?.get(position)!!)
 
-    inner class ViewHolder(val binding: SearchRecyclerItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: SearchRecyclerItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: SearchRowViewModel) {
             binding.viewModel = item
             binding.executePendingBindings()

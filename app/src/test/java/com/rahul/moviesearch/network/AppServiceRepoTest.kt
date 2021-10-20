@@ -8,7 +8,7 @@ import org.koin.core.inject
 import org.koin.core.parameter.parametersOf
 
 class AppServiceRepoTest: BaseTest(){
-    val appServiceRepo: AppServiceRepo by inject{ parametersOf(ServiceType.MOCK) }
+    private val appServiceRepo: AppServiceRepo by inject{ parametersOf(ServiceType.MOCK) }
 
     @Test
     fun `get trending latest repository is not null or empty`(){

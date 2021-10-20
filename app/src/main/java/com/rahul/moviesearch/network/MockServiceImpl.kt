@@ -16,7 +16,7 @@ class MockServiceImpl(private val delegate: BehaviorDelegate<ServiceInterface>) 
         pageNo: Int,
         apiKey: String
     ): Observable<MovieSearchResult> {
-        var json:String= getMovieListMockJSON()
+        val json:String= getMovieListMockJSON()
 
         val mockResponse= Gson().fromJson(json, MovieSearchResult::class.java)
         return delegate.returningResponse(mockResponse).fetchMovieList(movieName,pageNo = pageNo)
@@ -26,7 +26,7 @@ class MockServiceImpl(private val delegate: BehaviorDelegate<ServiceInterface>) 
         movieID: String,
         apiKey: String
     ): Observable<MovieDetailsResult> {
-        var json:String= getMovieDetailsJson()
+        val json:String= getMovieDetailsJson()
 
         val mockResponse= Gson().fromJson(json, MovieDetailsResult::class.java)
         return delegate.returningResponse(mockResponse).fetchMovieDetails(movieID)

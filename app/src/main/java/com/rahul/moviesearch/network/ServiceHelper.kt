@@ -13,12 +13,11 @@ import retrofit2.mock.NetworkBehavior
 class ServiceAPIHelper(serviceType: ServiceType){
     private var serviceInterface: ServiceInterface?=null
     init {
-        when(serviceType) {
+        serviceInterface = when(serviceType) {
             ServiceType.API->
-                serviceInterface =
-                    NetworkAPIController.getApiClient(Constants.NEWS_API_BASE_URL)?.create(
-                        ServiceInterface::class.java)
-            else-> serviceInterface =createMockServiceImpl()
+                NetworkAPIController.getApiClient(Constants.NEWS_API_BASE_URL)?.create(
+                    ServiceInterface::class.java)
+            else-> createMockServiceImpl()
         }
     }
 

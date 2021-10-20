@@ -8,7 +8,6 @@ import com.rahul.moviesearch.R
 import com.rahul.moviesearch.component.DialogExt
 import com.rahul.moviesearch.databinding.ActivityMovieDetailsBinding
 import com.rahul.moviesearch.features.movie_details.viewmodel.MovieDetailsViewModel
-import com.rahul.moviesearch.features.search.ViewState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

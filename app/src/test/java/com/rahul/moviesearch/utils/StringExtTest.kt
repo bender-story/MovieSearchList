@@ -7,13 +7,13 @@ import org.junit.Test
 class StringExtTest : BaseTest() {
     @Test
     fun `String should give empty string if value is null`() {
-        var value: String? = null
+        val value: String? = null
         Assert.assertEquals(value.filterEmpty(), "")
     }
 
     @Test
     fun `String should not give empty string if value is not null`() {
-        var value: String? = "some"
+        val value: String? = "some"
         Assert.assertNotEquals(value.filterEmpty(), "")
     }
 

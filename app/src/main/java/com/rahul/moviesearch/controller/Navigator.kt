@@ -3,7 +3,6 @@ package com.rahul.moviesearch.controller
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
 
 // This class makes the navigation easy.
 object Navigator {

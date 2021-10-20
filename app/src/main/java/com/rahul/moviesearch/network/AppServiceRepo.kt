@@ -2,9 +2,8 @@ package com.rahul.moviesearch.network
 
 import com.rahul.moviesearch.ServiceType
 import com.rahul.moviesearch.model.MovieDetailsResult
-import com.rahul.moviesearch.model.MovieSearchResult
 import com.rahul.moviesearch.model.Search
-import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.core.KoinComponent
